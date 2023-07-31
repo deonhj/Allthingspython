@@ -1,2 +1,4 @@
-for item in ["sandals", "glasses", "trousers"]:
-    print(item.capitalize())
+elements = ['a', 'b', 'c']
+new = 'x'
+elements[1] = new
+print(elements)
