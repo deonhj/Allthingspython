@@ -1,4 +1,4 @@
-elements = ['a', 'b', 'c']
-new = 'x'
-elements[1] = new
-print(elements)
+menu = ["pasta", "pizza", "salad"]
+
+for i, j in enumerate(menu):
+    print(f"{i}.{j}")
