@@ -1,4 +1,6 @@
-menu = ["pasta", "pizza", "salad"]
-
-for i, j in enumerate(menu):
-    print(f"{i}.{j}")
+file = open("data.txt", 'w')
+ 
+file.write("100.12\n")
+file.write("111.23\n")
+ 
+file.close()
