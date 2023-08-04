@@ -1,5 +1,4 @@
 eat
-sleep
-repeat
 gym
 work
+Take a shower

@@ -24,13 +24,35 @@ while True:
                 print(f"{index + 1}. {item}")
         case 'EDIT' | 'E':
             number = int(input("Number of the item you want to edit:"))
-            todos[number - 1] = input("Enter the new item:")
+            number = number - 1
+
+            with open('todos.txt', 'r') as file:
+                todos = file.readlines()
+
+            new_todo = input("Enter new todo:")
+            todos[number] = new_todo + '\n'
+
+            with open('todos.txt', 'w') as file:
+                file.writelines(todos)
+
         case 'EXIT' | 'X':
             print('Bye!')
             break
         case 'COMPLETE' | 'C':
+
+            with open('todos.txt', 'r') as file:
+                todos = file.readlines()
+
             number = int(input("Number of the item you want to complete:"))
-            todos.pop(number - 1)
+            index = number - 1
+            todo_to_remove = todos[index].strip('\n')
+            todos.pop(index)
+
+            with open('todos.txt', 'w') as file:
+                file.writelines(todos)
+
+            message = f"Todo {todo_to_remove} was removed from the list"
+            print(message)
         case _:
             print("That was not a valid option.")
 
