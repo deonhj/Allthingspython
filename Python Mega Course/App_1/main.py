@@ -4,19 +4,22 @@ while True:
     match user_action:
         case 'ADD' | 'A':
             todo = input("enter a todo:") + '\n'
-            file = open('todos.txt', 'r')
-            todos = file.readlines()
-            file.close()
+
+            with open('todos.txt', 'r') as file:
+                todos = file.readlines()
 
             todos.append(todo)
 
-            file = open('todos.txt', 'w')
-            file.writelines(todos)
-            file.close()
+            with open('todos.txt', 'w') as file:
+                file.writelines(todos)
+
         case 'SHOW' | 'S':
-            file = open('todos.txt', 'r')
-            todos = file.readlines()
-            file.close()
+
+            with open('todos.txt', 'r') as file:
+                todos = file.readlines()
+
+            todos = [item.strip('\n') for item in todos]
+
             for index, item in enumerate(todos):
                 print(f"{index + 1}. {item}")
         case 'EDIT' | 'E':
