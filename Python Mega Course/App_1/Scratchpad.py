@@ -1,6 +1,13 @@
-file = open("data.txt", 'w')
- 
-file.write("100.12\n")
-file.write("111.23\n")
- 
-file.close()
+length = float(input("Enter length: "))
+width = float(input("Enter width: "))
+
+perimeter = (length + width) * 2
+area = length * width
+
+print("Perimeter is", perimeter)
+print("Area is", area)
+
+if perimeter < 14 and area > 8:
+    print("OK")
+else:
+    print("NOT OK")
