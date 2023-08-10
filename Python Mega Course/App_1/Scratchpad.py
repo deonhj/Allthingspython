@@ -1,8 +1,10 @@
-waiting_list = ["john", "marry"]
-name = input("Enter name: ")
+def get_maximum():
+    celsius = [14, 15.1, 12.3]
+    maximum = max(celsius)
+    return maximum
 
-try:
-    number = waiting_list.index(name)
-    print(f"{name}'s turn is {number}")
-except ValueError:
-    print(f"{name} is not in the list")
+
+celsius = get_maximum()
+fahrenheit = celsius * 1.8 + 32
+
+print(fahrenheit)
