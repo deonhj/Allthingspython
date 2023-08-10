@@ -1,24 +1,7 @@
-def strength(password):
-    result = {}
-    if len(password) >= 8:
-        result["Length"] = True
-    else:
-        result["Length"] = False
+def calculate_time(h, g=9.80665):
+    t = (2 * h / g) ** 0.5
+    return t
 
-    digit = False
-    for i in password:
-        if i.isdigit():
-            digit = True
-    result["Digits"] = digit
 
-    upper = False
-    for i in password:
-        if i.isupper():
-            upper = True
-    result["Upper"] = upper
-
-    if all(result.values()):
-        test = "Strong password!"
-    else:
-        test = "Weak sauce password"
-    return test
+time = calculate_time(100)
+print(time)
