@@ -1,10 +1,24 @@
-def get_maximum():
-    celsius = [14, 15.1, 12.3]
-    maximum = max(celsius)
-    return maximum
+def strength(password):
+    result = {}
+    if len(password) >= 8:
+        result["Length"] = True
+    else:
+        result["Length"] = False
 
+    digit = False
+    for i in password:
+        if i.isdigit():
+            digit = True
+    result["Digits"] = digit
 
-celsius = get_maximum()
-fahrenheit = celsius * 1.8 + 32
+    upper = False
+    for i in password:
+        if i.isupper():
+            upper = True
+    result["Upper"] = upper
 
-print(fahrenheit)
+    if all(result.values()):
+        test = "Strong password!"
+    else:
+        test = "Weak sauce password"
+    return test

@@ -1,7 +1,12 @@
-def get_todos():
-    with open('todos.txt', 'r') as file_local:
+def get_todos(filepath):
+    with open(filepath, 'r') as file_local:
         todos_local = file_local.readlines()
     return todos_local
+
+
+def write_todos(filepath, todos_arg):
+    with open(filepath, 'w') as file_local:
+        file_local.writelines(todos_arg)
 
 
 while True:
@@ -10,16 +15,15 @@ while True:
     if user_action.startswith("ADD") or user_action.startswith("NEW"):
         todo = user_action[4:] + '\n'
 
-        todos = get_todos()
+        todos = get_todos("todos.txt")
 
         todos.append(todo)
 
-        with open('todos.txt', 'w') as file:
-            file.writelines(todos)
+        write_todos("todos.txt", todos)
 
     elif user_action.startswith("SHOW"):
 
-        todos = get_todos()
+        todos = get_todos("todos.txt")
 
         todos = [item.strip('\n') for item in todos]
 
@@ -31,36 +35,35 @@ while True:
             number = int(user_action[5:])
             number = number - 1
 
-            todos = get_todos()
+            todos = get_todos("todos.txt")
 
             new_todo = input("Enter new todo:")
             todos[number] = new_todo.upper() + '\n'
 
-            with open('todos.txt', 'w') as file:
-                file.writelines(todos)
+            write_todos("todos.txt", todos)
+
         except ValueError:
             print("Your command is not valid")
             continue  # the while will run again from the start
 
     elif user_action.startswith("COMPLETE"):
         try:
-            todos = get_todos()
+            todos = get_todos("todos.txt")
 
             number = int(user_action[9:])
             index = number - 1
             todo_to_remove = todos[index].strip('\n')
             todos.pop(index)
 
-            with open('todos.txt', 'w') as file:
-                file.writelines(todos)
+            write_todos("todos.txt", todos)
 
             message = f"Todo {todo_to_remove} was removed from the list"
             print(message)
         except IndexError:
-            print(f"Please enter a number between {1} and {len(todos)}")
+            print(f"Please enter a number. ")
             continue
         except ValueError:
-            print(f"That is not a valid number, please enter a number between {1} and {len(todos)}")
+            print(f"That is not a valid number, please enter a number. ")
 
     elif user_action.startswith("EXIT"):
         print('Bye!')
@@ -70,4 +73,3 @@ while True:
         print("Command is not valid.")
 
 print("Bye!")
-
