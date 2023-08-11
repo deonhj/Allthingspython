@@ -1,17 +1,4 @@
-def get_todos(filepath="todos.txt"):
-    """ Read a text file and return the list of
-    to-do items
-    """
-    with open(filepath, 'r') as file_local:
-        todos_local = file_local.readlines()
-    return todos_local
-
-
-def write_todos(todos_arg, filepath="todos.txt", ):
-    """ Write a list of to-do items to a text file"""
-    with open(filepath, 'w') as file_local:
-        file_local.writelines(todos_arg)
-
+import functions as f
 
 while True:
     user_action = input("Type add, show, edit, complete or exit.").strip().upper()
@@ -19,15 +6,15 @@ while True:
     if user_action.startswith("ADD") or user_action.startswith("NEW"):
         todo = user_action[4:] + '\n'
 
-        todos = get_todos()
+        todos = f.get_todos()
 
         todos.append(todo)
 
-        write_todos(todos)
+        f.write_todos(todos)
 
     elif user_action.startswith("SHOW"):
 
-        todos = get_todos()
+        todos = f.get_todos()
 
         todos = [item.strip('\n') for item in todos]
 
@@ -39,12 +26,12 @@ while True:
             number = int(user_action[5:])
             number = number - 1
 
-            todos = get_todos()
+            todos = f.get_todos()
 
             new_todo = input("Enter new todo:")
             todos[number] = new_todo.upper() + '\n'
 
-            write_todos(todos)
+            f.write_todos(todos)
 
         except ValueError:
             print("Your command is not valid")
@@ -52,14 +39,14 @@ while True:
 
     elif user_action.startswith("COMPLETE"):
         try:
-            todos = get_todos()
+            todos = f.get_todos()
 
             number = int(user_action[9:])
             index = number - 1
             todo_to_remove = todos[index].strip('\n')
             todos.pop(index)
 
-            write_todos(todos)
+            f.write_todos(todos)
 
             message = f"Todo {todo_to_remove} was removed from the list"
             print(message)
