@@ -1,5 +1,7 @@
 Do a barrel roll
 Eat a waffle
-Mow the lawn
-Wash the dogs
-Cook food
+Add a new todoKick a ballrun
+eat
+Run
+jog
+makes some coffee
