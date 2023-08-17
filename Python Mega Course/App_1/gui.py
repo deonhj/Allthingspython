@@ -12,9 +12,7 @@ Sg.theme("Topanga")
 clock = Sg.Text('', key="clock")
 label = Sg.Text("Type in a todo")
 input_box = Sg.InputText(tooltip="Enter todo", key="todo")
-add_button = Sg.Button(image_source='add.png',
-                       tooltip='Add Todo Item',
-                       image_size=(160, 30),
+add_button = Sg.Button("Add", tooltip='Add Todo Item',
                        mouseover_colors='LightBlue2',
                        key="Add")
 list_box = Sg.Listbox(values=functions.get_todos(),
